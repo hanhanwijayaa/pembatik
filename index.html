@@ -18,6 +18,30 @@
     </style>
   </head>
   <body>
-    <object data="GARIS SINGGUNG LINGKARAN-2.swf"></object>
+    <object id="swfObject" data="GARIS SINGGUNG LINGKARAN-2.swf"></object>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const swfObject = document.getElementById('swfObject');
+
+        // Function to request fullscreen
+        function requestFullScreen(element) {
+          if (element.requestFullscreen) {
+            element.requestFullscreen();
+          } else if (element.mozRequestFullScreen) { // Firefox
+            element.mozRequestFullScreen();
+          } else if (element.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+            element.webkitRequestFullscreen();
+          } else if (element.msRequestFullscreen) { // IE/Edge
+            element.msRequestFullscreen();
+          }
+        }
+
+        // Automatically request fullscreen after a short delay
+        setTimeout(function() {
+          requestFullScreen(swfObject);
+        }, 1000); // Delay to ensure the SWF has loaded
+      });
+    </script>
   </body>
 </html>
