@@ -1,4 +1,47 @@
 <!DOCTYPE html>
 <html>
- 
+  <head>
+    <meta charset="UTF-8">
+    <title>SWF Player Full Screen with Ruffle</title>
+    <script src="ruffle.js"></script>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+      object {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <object id="swfObject" data="GARIS SINGGUNG LINGKARAN-2.swf"></object>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const swfObject = document.getElementById('swfObject');
+
+        // Function to request fullscreen
+        function requestFullScreen(element) {
+          if (element.requestFullscreen) {
+            element.requestFullscreen();
+          } else if (element.mozRequestFullScreen) { // Firefox
+            element.mozRequestFullScreen();
+          } else if (element.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+            element.webkitRequestFullscreen();
+          } else if (element.msRequestFullscreen) { // IE/Edge
+            element.msRequestFullscreen();
+          }
+        }
+
+        // Automatically request fullscreen after a short delay
+        setTimeout(function() {
+          requestFullScreen(swfObject);
+        }, 1000); // Delay to ensure the SWF has loaded
+      });
+    </script>
+  </body>
 </html>
